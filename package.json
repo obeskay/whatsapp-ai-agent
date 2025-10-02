@@ -1,0 +1,41 @@
+{
+  "name": "whatsapp-ai-agent",
+  "version": "1.0.0",
+  "description": "Voice-enabled WhatsApp AI agent with Evolution API integration",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "setup": "node src/setup.js",
+    "test": "node src/test.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "ai",
+    "voice",
+    "evolution-api",
+    "openai",
+    "chatbot"
+  ],
+  "author": "Obed Vargas Villarreal",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^4.0.0",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.24.1",
+    "qrcode-terminal": "^0.12.0",
+    "socket.io": "^4.6.0",
+    "socket.io-client": "^4.6.0",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
