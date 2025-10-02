@@ -22,12 +22,15 @@ export class WhatsAppAgent {
           'X-Title': 'WhatsApp AI Agent'
         }
       });
-      this.model = 'openai/gpt-4o-mini';
+      // Fast + cheap models for WhatsApp (October 2025)
+      this.model = process.env.OPENROUTER_MODEL || 'mistralai/mistral-small-3';
+      logger.info(`Using OpenRouter with model: ${this.model}`);
     } else {
       this.ai = new OpenAI({
         apiKey: options.openaiKey
       });
-      this.model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+      this.model = process.env.OPENAI_MODEL || 'gpt-5-mini';
+      logger.info(`Using OpenAI with model: ${this.model}`);
     }
 
     // Initialize voice processor if enabled

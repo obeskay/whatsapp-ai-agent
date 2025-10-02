@@ -23,13 +23,13 @@ async function testOpenAI() {
           'X-Title': 'WhatsApp AI Agent'
         }
       });
-      model = 'openai/gpt-4o-mini';
+      model = process.env.OPENROUTER_MODEL || 'mistralai/mistral-small-3';
     } else {
       console.log(chalk.blue('Using OpenAI'));
       ai = new OpenAI({
         apiKey: process.env.OPENAI_API_KEY
       });
-      model = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+      model = process.env.OPENAI_MODEL || 'gpt-5-mini';
     }
 
     const completion = await ai.chat.completions.create({
