@@ -223,6 +223,17 @@ export class EvolutionAPI {
     }
   }
 
+  async setTyping(remoteJid, isTyping) {
+    try {
+      await this.client.post(`/chat/presence/${this.instanceName}`, {
+        number: remoteJid,
+        presence: isTyping ? 'composing' : 'available'
+      });
+    } catch (error) {
+      // Non-critical, don't log
+    }
+  }
+
   async disconnect() {
     try {
       await this.client.delete(`/instance/logout/${this.instanceName}`);

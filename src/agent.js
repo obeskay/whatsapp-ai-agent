@@ -75,6 +75,10 @@ Language: Respond in ${this.config.language || 'the same language as the user'}.
         return null;
       }
 
+      // Mark as read and show typing indicator for better UX
+      await this.evolutionAPI.markAsRead(message.key.id);
+      await this.evolutionAPI.setTyping(from, true);
+
       // Get or create conversation history
       const history = this.getConversationHistory(from);
 
@@ -87,6 +91,9 @@ Language: Respond in ${this.config.language || 'the same language as the user'}.
 
       // Process with AI
       const response = await this.generateResponse(history);
+
+      // Stop typing indicator before sending
+      await this.evolutionAPI.setTyping(from, false);
 
       // Add assistant response to history
       history.push({
